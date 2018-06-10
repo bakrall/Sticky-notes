@@ -31,11 +31,20 @@
 		var posX = ev.clientX + grabPointX,
 			posY = ev.clientY + grabPointY;
 
+		if (posX < 0) {
+			posX = 0;
+		}
+
+		if (posY < 0) {
+			posY = 0;
+		}
+
 		draggedEl.style.transform = "translateX(" + posX + "px) translateY(" + posY + "px)";
 	}
 
 	document.addEventListener('mousemove', onDrag, false);
 	document.querySelector('.sticker').addEventListener('mousedown',
 		onDragStart, false);
+
 
 })();
