@@ -50,23 +50,23 @@
 	}
 
 	createNote = function() {
-		var sticker = document.createElement('div'),
+		var stickerEl = document.createElement('div'),
 			barEl = document.createElement('div'),
 			textareaEl = document.createElement('textarea');
 
 		barEl.classList.add('bar');
-		strickerEl.classList.add('sticker');
+		stickerEl.classList.add('sticker');
 
 		stickerEl.appendChild(barEl);
 		stickerEl.appendChild(textareaEl);
 
+		stickerEl.addEventListener('mousemove', onDragStart, false);
+
 		document.body.appendChild(stickerEl);
 	}
 
+	createNote();
+
 	document.addEventListener('mousemove', onDrag, false);
 	document.addEventListener('mouseup', onDragEnd, false);
-	document.querySelector('.sticker').addEventListener('mousedown',
-		onDragStart, false);
-
-
 })();
