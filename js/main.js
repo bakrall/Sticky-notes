@@ -35,7 +35,7 @@
 	}
 
 	document.addEventListener('mousemove', onDrag, false);
-	document.querySelector('.sticker .bar').addEventListener('mousedown',
+	document.querySelector('.sticker').addEventListener('mousedown',
 		onDragStart, false);
 
 })();
