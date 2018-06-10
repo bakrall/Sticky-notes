@@ -42,7 +42,14 @@
 		draggedEl.style.transform = "translateX(" + posX + "px) translateY(" + posY + "px)";
 	}
 
+	onDragEnd = function() {
+		draggedEl = null;
+		grabPointY = null;
+		grabPointX = null;
+	}
+
 	document.addEventListener('mousemove', onDrag, false);
+	document.addEventListener('mouseup', onDragEnd, false);
 	document.querySelector('.sticker').addEventListener('mousedown',
 		onDragStart, false);
 
