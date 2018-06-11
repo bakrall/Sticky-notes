@@ -7,7 +7,8 @@
 		onDragEnd,
 		grabPointY,
 		grabPointX,
-		createNote;
+		createNote,
+		addBtnEl;
 
 	onDragStart = function(ev) {
 		var boundingClientRect;
@@ -52,7 +53,9 @@
 	createNote = function() {
 		var stickerEl = document.createElement('div'),
 			barEl = document.createElement('div'),
-			textareaEl = document.createElement('textarea');
+			textareaEl = document.createElement('textarea'),
+			transformCSSValue = "translateX(" + Math.random() * 400 + "px) translateY(" + Math.random() * 400 + "px)";
+
 
 		barEl.classList.add('bar');
 		stickerEl.classList.add('sticker');
@@ -60,13 +63,15 @@
 		stickerEl.appendChild(barEl);
 		stickerEl.appendChild(textareaEl);
 
-		stickerEl.addEventListener('mousemove', onDragStart, false);
+		stickerEl.style.transform = transformCSSValue;
+
+		stickerEl.addEventListener('mousedown', onDragStart, false);
 
 		document.body.appendChild(stickerEl);
 	}
 
-	createNote();
-
+	addBtnEl = document.querySelector('.add-note-btn')
+	addBtnEl.addEventListener('click', createNote);
 	document.addEventListener('mousemove', onDrag, false);
 	document.addEventListener('mouseup', onDragEnd, false);
 })();
