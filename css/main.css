@@ -25,6 +25,11 @@ body {
 
 .sticker .bar:hover {
 	cursor: move;
+	background: #4bd0b5;
+}
+
+.sticker:hover {
+	z-index: 1;
 }
 
 .sticker textarea {
