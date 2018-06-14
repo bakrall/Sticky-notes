@@ -8,7 +8,12 @@
 		grabPointY,
 		grabPointX,
 		createNote,
-		addBtnEl;
+		addBtnEl,
+		init,
+		testLocalStorage,
+		saveNote,
+		deleteNote,
+		loadNotes;
 
 	onDragStart = function(ev) {
 		var boundingClientRect;
@@ -54,11 +59,35 @@
 		var stickerEl = document.createElement('div'),
 			barEl = document.createElement('div'),
 			textareaEl = document.createElement('textarea'),
-			transformCSSValue = "translateX(" + Math.random() * 400 + "px) translateY(" + Math.random() * 400 + "px)";
+			saveBtnEl = document.createElement('button'),
+			deleteBtnEl = document.createElement('button'),
+			onSave,
+			onDelete;
+
+		onDelete = function() {
+			var obj = {};
+			deleteNote(obj);
+		}
+
+		onSave = function() {
+			var obj = {};
+			saveNote(obj);
+		}
+
+		saveBtnEl.addEventListener('click', onSave);
+		deleteBtnEl.addEventListener('click', onDelete);
+
+		saveBtnEl.classList.add('save-button');
+		deleteBtnEl.classList.add('delete-button');
+
+		var	transformCSSValue = "translateX(" + Math.random() * 400 + "px) translateY(" + Math.random() * 400 + "px)";
 
 
 		barEl.classList.add('bar');
 		stickerEl.classList.add('sticker');
+
+		barEl.appendChild(saveBtnEl);
+		barEl.appendChild(deleteBtnEl);
 
 		stickerEl.appendChild(barEl);
 		stickerEl.appendChild(textareaEl);
@@ -70,8 +99,42 @@
 		document.body.appendChild(stickerEl);
 	}
 
-	addBtnEl = document.querySelector('.add-note-btn')
-	addBtnEl.addEventListener('click', createNote);
-	document.addEventListener('mousemove', onDrag, false);
-	document.addEventListener('mouseup', onDragEnd, false);
+	testLocalStorage = function() {
+		var foo = 'foo';
+
+		try {
+			localStorage.setItem(foo, foo);
+			localStorage.removeItem(foo);
+			return true;
+		} catch (e) {
+			return false;
+		}
+	}
+
+	init = function() {
+
+	if (!testLocalStorage()) {
+		var message = "We are sorry you cannot use localStorage";
+	} else {
+		saveNote = function(note) {
+
+		};
+
+		deleteNote = function(note) {
+
+		};
+
+		loadNotes = function() {
+
+		};
+
+		loadNotes();
+	}
+		addBtnEl = document.querySelector('.add-note-btn')
+		addBtnEl.addEventListener('click', createNote);
+		document.addEventListener('mousemove', onDrag, false);
+		document.addEventListener('mouseup', onDragEnd, false);
+	}
+
+	init();
 })();
