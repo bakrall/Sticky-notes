@@ -153,6 +153,8 @@
 					);
 				}
 			};
+
+			loadNotes();
 		}
 
 		addNoteBtnEl = document.querySelector('.add-note-btn')
