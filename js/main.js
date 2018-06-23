@@ -93,6 +93,9 @@
 			);
 		}
 
+		stickerEl.id = noteConfig.id;
+		textareaEl.value = noteConfig.content;
+
 		barEl.classList.add('bar');
 		stickerEl.classList.add('sticker');
 
