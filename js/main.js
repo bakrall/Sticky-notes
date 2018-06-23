@@ -13,7 +13,8 @@
 		testLocalStorage,
 		saveNote,
 		deleteNote,
-		loadNotes;
+		loadNotes,
+		getNoteObject;
 
 	onDragStart = function(ev) {
 		var boundingClientRect;
@@ -53,6 +54,16 @@
 		draggedEl = null;
 		grabPointY = null;
 		grabPointX = null;
+	}
+
+	getNoteObject = function(el) {
+		var textarea = el.querySelector('textarea');
+
+		return {
+			content: textarea.value,
+			id: el.id,
+			transformCSSValue: el.style.transform
+		}
 	}
 
 	createNote = function() {
