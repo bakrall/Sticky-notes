@@ -83,8 +83,9 @@
 		}
 
 		onSave = function() {
-			getNoteObject(stickerEl);
-			saveNote(obj);
+			saveNote(
+				getNoteObject(stickerEl)
+			);
 		}
 
 		barEl.classList.add('bar');
