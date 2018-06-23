@@ -8,13 +8,14 @@
 		grabPointY,
 		grabPointX,
 		createNote,
-		addBtnEl,
+		addNoteBtnEl,
 		init,
 		testLocalStorage,
 		saveNote,
 		deleteNote,
 		loadNotes,
-		getNoteObject;
+		getNoteObject,
+		onAddNoteBtnClick;
 
 	onDragStart = function(ev) {
 		var boundingClientRect;
@@ -78,7 +79,7 @@
 			noteConfig = options || {
 				content:'',
 				id: 'sticker_' + new Date().getTime(),
-				transformCSSValue: "translateX(" + Math.random() * BOUNDARIES + "px) translateY(" + Math.random() * BOUNDARIES + "px)";
+				transformCSSValue: "translateX(" + Math.random() * BOUNDARIES + "px) translateY(" + Math.random() * BOUNDARIES + "px)"
 			};
 
 		onDelete = function() {
@@ -125,6 +126,10 @@
 		}
 	}
 
+	onAddNoteBtnClick = function() {
+		createNote();
+	}
+
 	init = function() {
 		if (!testLocalStorage()) {
 			var message = "You cannot use localStorage";
@@ -142,8 +147,8 @@
 			};
 		}
 
-		addBtnEl = document.querySelector('.add-note-btn')
-		addBtnEl.addEventListener('click', createNote, false);
+		addNoteBtnEl = document.querySelector('.add-note-btn')
+		addNoteBtnEl.addEventListener('click', onAddNoteBtnClick, false);
 		document.addEventListener('mousemove', onDrag, false);
 		document.addEventListener('mouseup', onDragEnd, false);
 	}
