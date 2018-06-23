@@ -66,16 +66,20 @@
 		}
 	}
 
-	createNote = function() {
+	createNote = function(options) {
 		var stickerEl = document.createElement('div'),
 			barEl = document.createElement('div'),
 			textareaEl = document.createElement('textarea'),
 			saveBtnEl = document.createElement('button'),
 			deleteBtnEl = document.createElement('button'),
 			onSave,
-			onDelete;
-
-		var	transformCSSValue = "translateX(" + Math.random() * 400 + "px) translateY(" + Math.random() * 400 + "px)";
+			onDelete,
+			BOUNDARIES = 400,
+			noteConfig = options || {
+				content:'',
+				id: 'sticker_' + new Date().getTime(),
+				transformCSSValue: "translateX(" + Math.random() * BOUNDARIES + "px) translateY(" + Math.random() * BOUNDARIES + "px)";
+			};
 
 		onDelete = function() {
 			var obj = {};
@@ -107,7 +111,7 @@
 
 		document.body.appendChild(stickerEl);
 
-		stickerEl.style.transform = transformCSSValue;
+		stickerEl.style.transform = noteConfig.transformCSSValue;
 	}
 
 	testLocalStorage = function() {
