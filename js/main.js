@@ -138,7 +138,7 @@
 			var message = "You cannot use localStorage";
 		} else {
 			saveNote = function(note) {
-				localStorage.setItem(note.id, note);
+				localStorage.setItem(note.id, JSON.stringify(note));
 			};
 
 			deleteNote = function(note) {
@@ -147,10 +147,12 @@
 
 			loadNotes = function(note) {
 				for (var i = 0; i < localStorage.length; i++) {
-					console.log(localStorage.getItem(
-						localStorage.key(i)
+					var noteObject = JSON.parse(
+						localStorage.getItem(
+							localStorage.key(i)
 						)
 					);
+					createNote(noteObject);
 				}
 			};
 
