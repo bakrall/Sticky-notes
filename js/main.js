@@ -87,8 +87,11 @@
 			};
 
 		onDelete = function() {
-			var obj = {};
-			deleteNote(obj);
+			deleteNote(
+				getNoteObject(stickerEl)
+			);
+
+			document.body.removeChild(stickerEl);
 		}
 
 		onSave = function() {
@@ -152,7 +155,7 @@
 			};
 
 			deleteNote = function(note) {
-
+				localStorage.removeItem(note.id);
 			};
 
 			loadNotes = function(note) {
