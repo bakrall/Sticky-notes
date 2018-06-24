@@ -133,6 +133,7 @@
 
 	testLocalStorage = function() {
 		var foo = 'foo';
+
 		try {
 			localStorage.setItem(foo, foo);
 			localStorage.removeItem(foo);
@@ -149,6 +150,15 @@
 	init = function() {
 		if (!testLocalStorage()) {
 			var message = "You cannot use localStorage";
+
+			saveNote = function() {
+				console.warn(message);
+			};
+
+			deleteNote = function() {
+				console.warn(message);
+			};
+
 		} else {
 			saveNote = function(note) {
 				localStorage.setItem(note.id, JSON.stringify(note));
