@@ -63,7 +63,11 @@
 		return {
 			content: textarea.value,
 			id: el.id,
-			transformCSSValue: el.style.transform
+			transformCSSValue: el.style.transform,
+			textarea: {
+				width: textarea.style.width,
+				height: textarea.style.height
+			}
 		}
 	}
 
@@ -91,6 +95,12 @@
 			saveNote(
 				getNoteObject(stickerEl)
 			);
+		}
+
+		if (noteConfig.textarea) {
+			textareaEl.style.width = noteConfig.textarea.width;
+			textareaEl.style.height = noteConfig.textarea.height;
+			textareaEl.style.resize = 'none';
 		}
 
 		stickerEl.id = noteConfig.id;
